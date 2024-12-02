@@ -5,12 +5,12 @@
     ```
 
 2. Activate Serial options
-    Select `3 Interface Options Configure connections to peripherals`>`I6 Serial Port Enable/disable shell messages on the serial connection`
-    When prompted with `Would you like a login shell to be accessible over serial?` select `No`
-    When prompted with `Would you like the serial port hardware to be enabled?` select `Yes`
-    Once you get the ` The serial login shell is disabled. The serial interface is enabled` select `Ok`
-    Once back in the main menu select `Finish`
-    When out of the menu reboot your machine
+    - Select `3 Interface Options Configure connections to peripherals`>`I6 Serial Port Enable/disable shell messages on the serial connection`
+    - When prompted with `Would you like a login shell to be accessible over serial?` select `No`
+    - When prompted with `Would you like the serial port hardware to be enabled?` select `Yes`
+    - Once you get the ` The serial login shell is disabled. The serial interface is enabled` select `Ok`
+    - Once back in the main menu select `Finish`
+    - When out of the menu reboot your machine
     ```bash
     sudo reboot
     ```
@@ -50,6 +50,6 @@
     Save with a `Ctrl+O`, `Enter` then `Ctrl+X` and reboot
 
 7. Flip the switches on the hat to be:
-    sw1: `OFF`,`ON`, `ON`, `OFF`
-    sw1: `OFF`,`OFF`, `ON`, `ON`
-    sw1: `ON`,`OFF`, `ON`, `ON`
+    - sw1: `OFF`,`ON`, `ON`, `OFF`
+    - sw2: `OFF`,`OFF`, `ON`, `ON`
+    - sw3: `ON`,`OFF`, `ON`, `ON`
