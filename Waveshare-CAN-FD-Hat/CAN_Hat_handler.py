@@ -25,7 +25,7 @@ class CANHandler:
             print(f"Initialized CAN bus on {self.channel} with bitrate {self.bitrate}")
         except OSError as e:
             print(f"Error initializing CAN bus on {self.channel}: {e}")
-            raise
+            raise SystemExit(e)
 
     def cleanup(self):
         """
@@ -88,6 +88,9 @@ if __name__ == "__main__":
             for message in messages:
                 can_handler.send_message(arbitration_id=message["id"], data=message["data"])
                 sleep(1)  # Wait 1 second between messages
-
+    except KeyboardInterrupt:
+        print("\nScript terminated by user")
     except Exception as e:
         print(f"Fatal error: {e}")
+    finally:
+        can_handler.cleanup()
