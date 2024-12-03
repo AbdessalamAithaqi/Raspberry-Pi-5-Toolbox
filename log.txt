@@ -1,0 +1,11 @@
+[    0.000000] Linux version 5.15.0-1065-raspi (buildd@bos03-arm64-087) (gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0, GNU ld (GNU Binutils for Ubuntu) 2.38) #68-Ubuntu SMP PREEMPT Tue Oct 15 19:25:34 UTC 2024 (Ubuntu 5.15.0-1065.68-raspi 5.15.167)
+[    1.918283] spi-bcm2835 fe204000.spi: chipselect 0 already in use
+[    1.918309] spi_master spi0: spi_device register error /soc/spi@7e204000/mcp251xfd@0
+[    1.918329] spi_master spi0: Failed to create SPI device for /soc/spi@7e204000/mcp251xfd@0
+[    2.301076] usb usb1: Manufacturer: Linux 5.15.0-1065-raspi dwc2_hsotg
+[    8.180670] spi_master spi1: will run message pump with realtime priority
+[    8.235837] mcp251xfd spi1.0 can0: MCP2518FD rev0.0 (-RX_INT -MAB_NO_WARN +CRC_REG +CRC_RX +CRC_TX +ECC -HD c:40.00MHz m:20.00MHz r:17.00MHz e:16.66MHz) successfully initialized.
+[    9.154041] mcp251x spi0.0: MCP251x didn't enter in conf mode after reset
+[    9.154234] mcp251x spi0.0: Probe failed, err=110
+[    9.154248] mcp251x: probe of spi0.0 failed with error -110
+[ 5835.862350] mcp251xfd spi1.0 can0: CRC read error at address 0x0010 (length=4, data=ed 80 5a 0c, CRC=0x5af2) retrying.
