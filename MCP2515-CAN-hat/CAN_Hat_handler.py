@@ -3,13 +3,14 @@ from time import sleep
 import signal
 import sys
 
+
 class CANHandler:
-    def __init__(self,channel, bitrate=500000):
+    def __init__(self, channel, bitrate=500000):
         """
-        Initialize the CAN handler for a SocketCAN interface
+        Initialize the CAN handler for a SocketCAN interface.
         
-        :param channel: The CAN interface(e.g., 'can0')
-        :param bitrate: The bitrate of the CAN bus (default:500000)
+        :param channel: The CAN interface (e.g., 'can0')
+        :param bitrate: The bitrate of the CAN bus (default: 500000)
         """
         self.channel = channel
         self.bitrate = bitrate
@@ -17,37 +18,36 @@ class CANHandler:
 
     def setup(self):
         """
-        Set up the CAN bus interface
+        Set up the CAN bus interface.
         """
         try:
             self.bus = can.Bus(interface="socketcan", channel=self.channel, bitrate=self.bitrate)
             print(f"Initialized CAN bus on {self.channel} with bitrate {self.bitrate}")
         except OSError as e:
-            print(f"Error initializing CAN bus on {self.channel}:{e}")
+            print(f"Error initializing CAN bus on {self.channel}: {e}")
             raise
-    
+
     def cleanup(self):
         """
-        Properly clean up and shut down the CAN interface
+        Properly clean up and shut down the CAN interface.
         """
         if self.bus is not None:
             self.bus.shutdown()
             print(f"Cleaned up CAN bus on {self.channel}")
 
-    def send_message(self, arbitration_id, data, ):
+    def send_message(self, arbitration_id, data):
         """
-        Send CAN messages
+        Send a CAN message.
 
         :param arbitration_id: The CAN message ID
-        :param data: A list of data bytes (max 8bytes)
+        :param data: A list of data bytes (max 8 bytes)
         """
         if self.bus is None:
             print("CAN bus is not initialized. Call setup() first.")
             return
-        
-        
+
         message = can.Message(
-            arbitration_id= arbitration_id,
+            arbitration_id=arbitration_id,
             data=data,
             is_extended_id=False
         )
@@ -55,36 +55,15 @@ class CANHandler:
         try:
             # Send the message
             self.bus.send(message)
-            print(f"Message sent: ID={arbitration_id}, data={data}")
-            
+            print(f"Message sent: ID={hex(arbitration_id)}, data={data}")
         except can.CanError as e:
             print(f"Failed to send message: {e}")
-
-    def receive_message(self, timeout=1.0):
-        """
-        Receive a CAN message.
-
-        :param timeout: Timeout in seconds for receiving a message
-        :return: The received CAN message or None if no message is recived
-        """
-        if self.bus is None:
-            print("CAN bus is not initialized. Call setup() first.")
-            return None
-        
-        try:
-            message=self.bus.recv(timeout)
-            if message:
-                print(f"message received: ID={hex(message.arbitration_id)}, data={list(message.data)}")
-                return message
-        except Exception as e:
-            print(f"Error receiveing message: {e}")
-            return None
 
 
 if __name__ == "__main__":
     def signal_handler(sig, frame):
         """
-        Signal handler to clean up resources on script termination
+        Signal handler to clean up resources on script termination.
         """
         print("\nExiting gracefully...")
         can_handler.cleanup()
@@ -96,11 +75,21 @@ if __name__ == "__main__":
     try:
         can_handler.setup()
 
+        # Define a list of messages to send
+        messages = [
+            {"id": 0x123, "data": [0x01, 0x02, 0x03]},
+            {"id": 0x124, "data": [0x04, 0x05, 0x06]},
+            {"id": 0x125, "data": [0x07, 0x08, 0x09]},
+            {"id": 0x126, "data": [0x0A, 0x0B, 0x0C]},
+        ]
+
+        # Loop through messages continuously
         while True:
-            can_handler.send_message(arbitration_id=0x123, data=[0x01,0x02,0x03])
-            sleep(2)
+            for message in messages:
+                can_handler.send_message(arbitration_id=message["id"], data=message["data"])
+                sleep(1)  # Wait 1 second between messages
 
     except Exception as e:
-        print(f"Fatal error:{e}")
+        print(f"Fatal error: {e}")
     finally:
         can_handler.cleanup()
