@@ -1,9 +1,26 @@
-ls /dev/spi*
-/dev/spidev0.0  /dev/spidev0.1  /dev/spidev1.1  /dev/spidev1.2
-
-ip link show can0
-3: can0: <NOARP,UP,LOWER_UP,ECHO> mtu 16 qdisc pfifo_fast state UP mode DEFAULT group default qlen 10
-    link/can 
-
-sudo dmesg|grep mcp
-[    7.928947] mcp251xfd spi1.0 can0: MCP2518FD rev0.0 (-RX_INT -MAB_NO_WARN +CRC_REG +CRC_RX +CRC_TX +ECC -HD c:40.00MHz m:20.00MHz r:17.00MHz e:16.66MHz) successfully initialized.
+Initialized CAN bus on can0 with bitrate 500000
+Message sent: ID=0x123, data=[1, 2, 3]
+Message sent: ID=0x124, data=[4, 5, 6]
+Message sent: ID=0x125, data=[7, 8, 9]
+Message sent: ID=0x126, data=[10, 11, 12]
+Message sent: ID=0x123, data=[1, 2, 3]
+Message sent: ID=0x124, data=[4, 5, 6]
+Message sent: ID=0x125, data=[7, 8, 9]
+Message sent: ID=0x126, data=[10, 11, 12]
+Message sent: ID=0x123, data=[1, 2, 3]
+Message sent: ID=0x124, data=[4, 5, 6]
+Message sent: ID=0x125, data=[7, 8, 9]
+Failed to send message: Failed to transmit: No buffer space available [Error Code 105]
+Failed to send message: Failed to transmit: No buffer space available [Error Code 105]
+Failed to send message: Failed to transmit: No buffer space available [Error Code 105]
+Failed to send message: Failed to transmit: No buffer space available [Error Code 105]
+Failed to send message: Failed to transmit: No buffer space available [Error Code 105]
+Failed to send message: Failed to transmit: No buffer space available [Error Code 105]
+Failed to send message: Failed to transmit: No buffer space available [Error Code 105]
+Failed to send message: Failed to transmit: No buffer space available [Error Code 105]
+Failed to send message: Failed to transmit: No buffer space available [Error Code 105]
+Failed to send message: Failed to transmit: No buffer space available [Error Code 105]
+^C
+Exiting gracefully...
+Cleaned up CAN bus on can0
+Cleaned up CAN bus on can0
