@@ -1,11 +1,18 @@
-lsusb
-Bus 001 Device 004: ID 1a86:7523 QinHeng Electronics CH340 serial converter
-Bus 001 Device 003: ID 0403:6011 Future Technology Devices International, Ltd FT4232H Quad HS USB-UART/FIFO IC
-Bus 001 Device 002: ID 0424:2514 Microchip Technology, Inc. (formerly SMSC) USB 2.0 Hub
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+sudo lsof /dev/ttyUSB4
+lsof: WARNING: can't stat() fuse.portal file system /run/user/128/doc
+      Output information may be incomplete.
+lsof: WARNING: can't stat() fuse.portal file system /run/user/1001/doc
+      Output information may be incomplete.
+lsof: WARNING: can't stat() fuse.gvfsd-fuse file system /run/user/1001/gvfs
+      Output information may be incomplete.
+lsof: WARNING: can't stat() fuse.xrdp-chansrv file system /home/abdel/thinclient_drives
+      Output information may be incomplete.
+COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+slcand  6376 root    4u   CHR  188,4      0t0 1629 /dev/ttyUSB4
 
-sudo dmesg | grep ttyUSB
-[    8.747471] usb 1-1.2: ch341-uart converter now attached to ttyUSB4
+sudo kill 6376
 
-sudo slcand -o -c -s6 /dev/ttyUSB4 can0
-write: Input/output error
+sudo slcand -o -c -s6 /dev/ttyUSB4
+
+sudo ip link set can0 up
+Cannot find device "can0"
