@@ -22,7 +22,7 @@ class CANHandler:
         Connect to the CAN bus.
         """
         try:
-            self.bus = can.interface.Bus(bustype=self.interface, channel=self.channel   )
+            self.bus = can.interface.Bus(interface=self.interface, channel=self.channel)
             print(
                 f"Connected to CAN bus on channel {self.channel} with {self.interface}"
             )
