@@ -1,9 +1,2 @@
-sudo dmesg|grep mcp
-[sudo] password for abdel: 
-[    7.981744] mcp251xfd spi0.0 can0: MCP2518FD rev0.0 (-RX_INT -MAB_NO_WARN +CRC_REG +CRC_RX +CRC_TX +ECC -HD c:40.00MHz m:20.00MHz r:17.00MHz e:16.66MHz) successfully initialized.
-
-ip link show can0
-3: can0: <NOARP,UP,LOWER_UP,ECHO> mtu 16 qdisc pfifo_fast state UP mode DEFAULT group default qlen 10
-    link/can 
-
-cansend can0 123#1122334455667788
+Failed to connect to CAN bus: (25, 'Inappropriate ioctl for device')
+Fatal error: (25, 'Inappropriate ioctl for device')
