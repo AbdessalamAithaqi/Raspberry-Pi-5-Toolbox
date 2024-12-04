@@ -1,2 +1,11 @@
-Failed to connect to CAN bus: (25, 'Inappropriate ioctl for device')
-Fatal error: (25, 'Inappropriate ioctl for device')
+lsusb
+Bus 001 Device 004: ID 1a86:7523 QinHeng Electronics CH340 serial converter
+Bus 001 Device 003: ID 0403:6011 Future Technology Devices International, Ltd FT4232H Quad HS USB-UART/FIFO IC
+Bus 001 Device 002: ID 0424:2514 Microchip Technology, Inc. (formerly SMSC) USB 2.0 Hub
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+sudo dmesg | grep ttyUSB
+[    8.747471] usb 1-1.2: ch341-uart converter now attached to ttyUSB4
+
+sudo slcand -o -c -s6 /dev/ttyUSB4 can0
+write: Input/output error
