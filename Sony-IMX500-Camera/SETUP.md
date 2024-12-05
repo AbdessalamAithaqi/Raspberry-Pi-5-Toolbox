@@ -8,7 +8,7 @@
     sudo reboot
     ```
 
-3. Install the opencv the Computer Vision library
+3. Run a test that runs indefinetly on a premade trained model
     ```bash
-    pip install opencv-python
+    rpicam-hello -t 0s --post-process-file /usr/share/rpi-camera-assets/imx500_mobilenet_ssd.json --viewfinder-width 1920 --viewfinder-height 1080 --framerate 30
     ```
