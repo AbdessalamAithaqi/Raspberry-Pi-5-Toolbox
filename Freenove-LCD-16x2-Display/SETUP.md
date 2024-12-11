@@ -18,10 +18,19 @@ Top to bottom
     ```
 
 # Code
-1. Find the `i2c` address
+1. Enable I2C on your Raspberry Pi
+   ```sh
+   sudo raspi-config
+   ```
+   - Navigate to `3 Interface Options > P5 I2C`
+   - Reboot
+     ```sh
+     sudo reboot
+     ```
+	 
+2. Find the `i2c` address
     ```bash
     sudo i2cdetect -y 1
     ```
 
-2. Set the address at the one found in the previous step
-    ```python
+3. Set the address at the one found in the previous step
