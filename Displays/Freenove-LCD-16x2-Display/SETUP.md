@@ -9,7 +9,6 @@ Top to bottom
 1. Install `smbus2` a library for interfacing with I²C devices via the SMBus
     ```bash
     pip install smbus2 
-
     ```
 
 2. Install `RPLCD` a library for controlling character LCDs
